@@ -1,1 +1,1 @@
-Just a dump for any programs I make
+Just a dump
