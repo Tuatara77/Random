@@ -1,1 +1,1 @@
-Anything that I make that doesn't necessarily deserve its own repository
+For anything that doesn't necessarily deserve its own repository
