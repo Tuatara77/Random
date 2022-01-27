@@ -26,7 +26,8 @@ if wordguess == word:
         for f in wordslist:
             words.write(f"{f}\n")
 else:
-    print("".join(word))
+    word = "".join(word)
+    print(f"The word was {word}")
     with open("5-letter-words", "w") as words:
         for f in wordslist:
             words.write(f"{f}\n")
