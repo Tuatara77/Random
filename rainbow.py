@@ -45,19 +45,17 @@ def main():
     pygame.init()
     info = pygame.display.Info()
 
-    if FULLSCREEN: 
-    	SCREENWIDTH = info.current_w
+    if FULLSCREEN:
+        SCREENWIDTH = info.current_w
     	SCREENHEIGHT = info.current_h
     	del info
     else:
         SCREENWIDTH = 500
-  	SCREENHEIGHT = 500
-  	del info
+        SCREENHEIGHT = 500
+        del info
     
-    if FULLSCREEN: 
-  	screen = pygame.display.set_mode([SCREENWIDTH, SCREENHEIGHT], pygame.FULLSCREEN)
-    else: 
-  	screen = pygame.display.set_mode([SCREENWIDTH, SCREENHEIGHT])
+    if FULLSCREEN: screen = pygame.display.set_mode([SCREENWIDTH, SCREENHEIGHT], pygame.FULLSCREEN)
+    else: screen = pygame.display.set_mode([SCREENWIDTH, SCREENHEIGHT])
 
     clock = pygame.time.Clock()
     colour = random.choice(STARTCOLOURS)
