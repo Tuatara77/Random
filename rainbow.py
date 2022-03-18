@@ -2,24 +2,25 @@ import pygame
 import random
 
 CHANGERATE = 1
+MAXBRIGHTNESS = 255
 
 def rainbow(rgb: tuple):
     assert len(rgb) == 3 and rgb[0] == int(rgb[0]) and rgb[1] == int(rgb[1]) and rgb[2] == int(rgb[2]), "Tuple must be 3 integers"
     r, g, b = rgb
     
-    if r < 255 and g == 0 and b == 255:         r += CHANGERATE
-    elif 0 < r <= 255 and g == 255 and b == 0:  r -= CHANGERATE
-    elif r == 255 and g < 255 and b == 0:       g += CHANGERATE
-    elif r == 0 and 0 < g <= 255 and b == 255:  g -= CHANGERATE
-    elif r == 0 and g == 255 and b < 255:       b += CHANGERATE
-    elif r == 255 and g == 0 and 0 < b <= 255:  b -= CHANGERATE
+    if r < MAXBRIGHTNESS and g == 0 and b == MAXBRIGHTNESS:         r += CHANGERATE
+    elif 0 < r <= MAXBRIGHTNESS and g == MAXBRIGHTNESS and b == 0:  r -= CHANGERATE
+    elif r == MAXBRIGHTNESS and g < MAXBRIGHTNESS and b == 0:       g += CHANGERATE
+    elif r == 0 and 0 < g <= MAXBRIGHTNESS and b == MAXBRIGHTNESS:  g -= CHANGERATE
+    elif r == 0 and g == MAXBRIGHTNESS and b < MAXBRIGHTNESS:       b += CHANGERATE
+    elif r == MAXBRIGHTNESS and g == 0 and 0 < b <= MAXBRIGHTNESS:  b -= CHANGERATE
 
-    if r <= 0:   r = 0
-    if r >= 255: r = 255
-    if g <= 0:   g = 0
-    if g >= 255: g = 255
-    if b <= 0:   b = 0
-    if b >= 255: b = 255
+    if r <= 0:             r = 0
+    if r >= MAXBRIGHTNESS: r = MAXBRIGHTNESS
+    if g <= 0:             g = 0
+    if g >= MAXBRIGHTNESS: g = MAXBRIGHTNESS
+    if b <= 0:             b = 0
+    if b >= MAXBRIGHTNESS: b = MAXBRIGHTNESS
 
     return (r,g,b)
 
