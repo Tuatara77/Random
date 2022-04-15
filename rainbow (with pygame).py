@@ -15,25 +15,25 @@ STARTCOLOURS = [
 	(               MAXBRIGHTNESS,                                  MINBRIGHTNESS,                 random.randrange(MINBRIGHTNESS,MAXBRIGHTNESS))
     ]
 
-def rainbow(rgb: tuple):
+def rainbow(rgb: tuple, minbrightness, maxbrightness):
     assert len(rgb) == 3 and rgb[0] == int(rgb[0]) and rgb[1] == int(rgb[1]) and rgb[2] == int(rgb[2]), "Tuple must be 3 integers"
-    assert rgb[0] == MAXBRIGHTNESS or rgb[1] == MAXBRIGHTNESS or rgb[2] == MAXBRIGHTNESS and \
-           rgb[0] == MINBRIGHTNESS or rgb[1] == MINBRIGHTNESS or rgb[2] == MINBRIGHTNESS, "There must be a value which is 0 and a value which is max-MAXBRIGHTNESS"
+    assert rgb[0] == maxbrightness or rgb[1] == maxbrightness or rgb[2] == maxbrightness and \
+           rgb[0] == minbrightness or rgb[1] == minbrightness or rgb[2] == minbrightness, "There must be values which are equal to the min and max brightness"
     r, g, b = rgb
 
-    if                   r <  MAXBRIGHTNESS and                 g == MINBRIGHTNESS and                 b == MAXBRIGHTNESS: r += CHANGERATE
-    elif MINBRIGHTNESS < r <= MAXBRIGHTNESS and                 g == MAXBRIGHTNESS and                 b == MINBRIGHTNESS: r -= CHANGERATE
-    elif                 r == MAXBRIGHTNESS and                 g <  MAXBRIGHTNESS and                 b == MINBRIGHTNESS: g += CHANGERATE
-    elif                 r == MINBRIGHTNESS and MINBRIGHTNESS < g <= MAXBRIGHTNESS and                 b == MAXBRIGHTNESS: g -= CHANGERATE
-    elif                 r == MINBRIGHTNESS and                 g == MAXBRIGHTNESS and                 b <  MAXBRIGHTNESS: b += CHANGERATE
-    elif                 r == MAXBRIGHTNESS and                 g == MINBRIGHTNESS and MINBRIGHTNESS < b <= MAXBRIGHTNESS: b -= CHANGERATE
+    if                   r <  maxbrightness and                 g == minbrightness and                 b == maxbrightness: r += CHANGERATE
+    elif minbrightness < r <= maxbrightness and                 g == maxbrightness and                 b == minbrightness: r -= CHANGERATE
+    elif                 r == maxbrightness and                 g <  maxbrightness and                 b == minbrightness: g += CHANGERATE
+    elif                 r == minbrightness and minbrightness < g <= maxbrightness and                 b == maxbrightness: g -= CHANGERATE
+    elif                 r == minbrightness and                 g == maxbrightness and                 b <  maxbrightness: b += CHANGERATE
+    elif                 r == maxbrightness and                 g == minbrightness and minbrightness < b <= maxbrightness: b -= CHANGERATE
 
-    if r <= MINBRIGHTNESS: r = MINBRIGHTNESS
-    if r >= MAXBRIGHTNESS: r = MAXBRIGHTNESS
-    if g <= MINBRIGHTNESS: g = MINBRIGHTNESS
-    if g >= MAXBRIGHTNESS: g = MAXBRIGHTNESS
-    if b <= MINBRIGHTNESS: b = MINBRIGHTNESS
-    if b >= MAXBRIGHTNESS: b = MAXBRIGHTNESS
+    if r <= minbrightness: r = minbrightness
+    if r >= maxbrightness: r = maxbrightness
+    if g <= minbrightness: g = minbrightness
+    if g >= maxbrightness: g = maxbrightness
+    if b <= minbrightness: b = minbrightness
+    if b >= maxbrightness: b = maxbrightness
 
     return (r,g,b)
 
@@ -67,7 +67,7 @@ def main():
                     done = True
                     # done = 10000000
         
-        colour = rainbow(colour)
+        colour = rainbow(colour, MINBRIGHTNESS, MAXBRIGHTNESS)
         screen.fill(colour)
         print(colour)
         # counter += 1
@@ -82,7 +82,7 @@ if __name__ == "__main__":
 def a():
     colour = (255,0,0)
     for f in range(1000000):
-        colour = rainbow(colour)
+        colour = rainbow(colour, MINBRIGHTNESS, MAXBRIGHTNESS)
 
 # import cProfile
 # cProfile.run("main()")
